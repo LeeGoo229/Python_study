@@ -31,6 +31,67 @@ CURRICULUM = {
                 ]
             },
             {
+                "id": "python_basics",
+                "name": "🐍 [0.5] Python Basics",
+                "units": [
+                    {
+                        "key": "py_basic_1",
+                        "title": "1. 기본 문법과 핵심 자료형 (Syntax & DataTypes)",
+                        "theory": STUDY_PY_DIR / "[0.5] Python_Basics" / "Python_Basic_1_Syntax_DataTypes.ipynb",
+                        "practice": STUDY_PY_DIR / "[0.5] Python_Basics" / "Python_Basic_1_Syntax_DataTypes_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Python_Basic_1_Syntax_DataTypes_Answer.ipynb"
+                    },
+                    {
+                        "key": "py_basic_2",
+                        "title": "2. 조건문, 반복문과 제어 흐름 (Control Flow)",
+                        "theory": STUDY_PY_DIR / "[0.5] Python_Basics" / "Python_Basic_2_Control_Flow.ipynb",
+                        "practice": STUDY_PY_DIR / "[0.5] Python_Basics" / "Python_Basic_2_Control_Flow_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Python_Basic_2_Control_Flow_Answer.ipynb"
+                    },
+                    {
+                        "key": "py_basic_3",
+                        "title": "3. 함수 설계, 람다식과 모듈화 (Functions & Modules)",
+                        "theory": STUDY_PY_DIR / "[0.5] Python_Basics" / "Python_Basic_3_Functions_Modules.ipynb",
+                        "practice": STUDY_PY_DIR / "[0.5] Python_Basics" / "Python_Basic_3_Functions_Modules_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Python_Basic_3_Functions_Modules_Answer.ipynb"
+                    },
+                    {
+                        "key": "py_basic_4",
+                        "title": "4. 데이터와 변수 유형 분류 (Data Classification)",
+                        "theory": STUDY_PY_DIR / "[0.5] Python_Basics" / "Python_Basic_4_Data_Classification.ipynb",
+                        "practice": STUDY_PY_DIR / "[0.5] Python_Basics" / "Python_Basic_4_Data_Classification_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Python_Basic_4_Data_Classification_Answer.ipynb"
+                    },
+                    {
+                        "key": "py_basic_5",
+                        "title": "5. 필수 표준 라이브러리와 데이터 생태계 (Library Overview)",
+                        "theory": STUDY_PY_DIR / "[0.5] Python_Basics" / "Python_Basic_5_Library_Overview.ipynb",
+                        "practice": STUDY_PY_DIR / "[0.5] Python_Basics" / "Python_Basic_5_Library_Overview_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Python_Basic_5_Library_Overview_Answer.ipynb"
+                    }
+                ]
+            },
+            {
+                "id": "numpy",
+                "name": "🔢 [1] NumPy Matrix",
+                "units": [
+                    {
+                        "key": "numpy_1",
+                        "title": "1. N차원 배열 생성과 구조 (Array Creation & Shape)",
+                        "theory": STUDY_PY_DIR / "[1] Numpy" / "Numpy_1_Array_Creation_Shape.ipynb",
+                        "practice": STUDY_PY_DIR / "[1] Numpy" / "Numpy_1_Array_Creation_Shape_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Numpy_1_Array_Creation_Shape_Answer.ipynb"
+                    },
+                    {
+                        "key": "numpy_2",
+                        "title": "2. 벡터화 연산과 브로드캐스팅 (Vectorized Operations)",
+                        "theory": STUDY_PY_DIR / "[1] Numpy" / "Numpy_2_Vectorized_Operations.ipynb",
+                        "practice": STUDY_PY_DIR / "[1] Numpy" / "Numpy_2_Vectorized_Operations_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Numpy_2_Vectorized_Operations_Answer.ipynb"
+                    }
+                ]
+            },
+            {
                 "id": "pandas",
                 "name": "🐼 [2] Pandas & EDA",
                 "units": [
@@ -148,6 +209,74 @@ CURRICULUM = {
                         "theory": STUDY_PY_DIR / "[4] Statistics" / "Statistics_4_inference_extension.ipynb",
                         "practice": STUDY_PY_DIR / "[4] Statistics" / "Statistics_4_inference_extension_Practice.ipynb",
                         "answer": STUDY_ANS_DIR / "Statistics_4_inference_extension_Answer.ipynb"
+                    }
+                ]
+            },
+            {
+                "id": "eda_advanced",
+                "name": "🔍 [5] EDA 심화 프로젝트",
+                "units": [
+                    {
+                        "key": "eda_adv_1",
+                        "title": "1. 이커머스 비즈니스 탐색과 이상치 탐지 (E-Commerce EDA)",
+                        "theory": STUDY_PY_DIR / "[5] EDA_Advanced" / "EDA_1_Overview_ECommerce.ipynb",
+                        "practice": STUDY_PY_DIR / "[5] EDA_Advanced" / "EDA_1_Overview_ECommerce_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "EDA_1_Overview_ECommerce_Answer.ipynb"
+                    },
+                    {
+                        "key": "eda_adv_2",
+                        "title": "2. 헬스케어 심장 질환 환자 위험 인자 분석 (Heart Disease)",
+                        "theory": STUDY_PY_DIR / "[5] EDA_Advanced" / "EDA_2_Healthcare_Heart_Disease.ipynb",
+                        "practice": STUDY_PY_DIR / "[5] EDA_Advanced" / "EDA_2_Healthcare_Heart_Disease_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "EDA_2_Healthcare_Heart_Disease_Answer.ipynb"
+                    },
+                    {
+                        "key": "eda_adv_3",
+                        "title": "3. HR 인사 데이터 결측 분석과 이직 요인 탐색 (HR Employee Churn)",
+                        "theory": STUDY_PY_DIR / "[5] EDA_Advanced" / "EDA_3_HR_Employee_Churn.ipynb",
+                        "practice": STUDY_PY_DIR / "[5] EDA_Advanced" / "EDA_3_HR_Employee_Churn_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "EDA_3_HR_Employee_Churn_Answer.ipynb"
+                    },
+                    {
+                        "key": "eda_adv_4",
+                        "title": "4. 다변량 분석, 교차표와 상관계수 히트맵 (Multivariate Analysis)",
+                        "theory": STUDY_PY_DIR / "[5] EDA_Advanced" / "EDA_4_Multivariate_Correlation.ipynb",
+                        "practice": STUDY_PY_DIR / "[5] EDA_Advanced" / "EDA_4_Multivariate_Correlation_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "EDA_4_Multivariate_Correlation_Answer.ipynb"
+                    }
+                ]
+            },
+            {
+                "id": "preprocessing",
+                "name": "⚙️ [6] 데이터 전처리 & 파이프라인",
+                "units": [
+                    {
+                        "key": "prep_1",
+                        "title": "1. 결측치와 이상치 정제 (Missing & Outliers)",
+                        "theory": STUDY_PY_DIR / "[6] Preprocessing" / "Preprocessing_1_Missing_Outliers.ipynb",
+                        "practice": STUDY_PY_DIR / "[6] Preprocessing" / "Preprocessing_1_Missing_Outliers_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Preprocessing_1_Missing_Outliers_Answer.ipynb"
+                    },
+                    {
+                        "key": "prep_2",
+                        "title": "2. 피처 스케일링과 누수 방지 (Feature Scaling)",
+                        "theory": STUDY_PY_DIR / "[6] Preprocessing" / "Preprocessing_2_Feature_Scaling.ipynb",
+                        "practice": STUDY_PY_DIR / "[6] Preprocessing" / "Preprocessing_2_Feature_Scaling_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Preprocessing_2_Feature_Scaling_Answer.ipynb"
+                    },
+                    {
+                        "key": "prep_3",
+                        "title": "3. 범주형 데이터 인코딩 (Categorical Encoding)",
+                        "theory": STUDY_PY_DIR / "[6] Preprocessing" / "Preprocessing_3_Categorical_Encoding.ipynb",
+                        "practice": STUDY_PY_DIR / "[6] Preprocessing" / "Preprocessing_3_Categorical_Encoding_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Preprocessing_3_Categorical_Encoding_Answer.ipynb"
+                    },
+                    {
+                        "key": "prep_4",
+                        "title": "4. ColumnTransformer와 파이프라인 통합 (Pipeline Integration)",
+                        "theory": STUDY_PY_DIR / "[6] Preprocessing" / "Preprocessing_4_Pipeline_Integration.ipynb",
+                        "practice": STUDY_PY_DIR / "[6] Preprocessing" / "Preprocessing_4_Pipeline_Integration_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Preprocessing_4_Pipeline_Integration_Answer.ipynb"
                     }
                 ]
             }
