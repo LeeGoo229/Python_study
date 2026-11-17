@@ -10,8 +10,9 @@
 
 1. **원스톱 인터랙티브 학습 환경 (Zero-Setup)**:
    - 로컬에 Python이나 Jupyter Notebook을 설치하지 않아도, 웹 브라우저에서 바로 **이론 학습 ➔ 문제 풀이 ➔ 실시간 코드 실행 ➔ 모범 답안 비교**가 가능합니다.
-2. **검증된 주피터 노트북 84종 완벽 연동**:
+2. **검증된 주피터 노트북 87종 연동**:
    - `Study_Python`의 핵심 개념과 연습문제(`_Practice.ipynb`), 그리고 `Study_Python_Answer`의 모범 답안(`_Answer.ipynb`)이 실시간 동기화됩니다.
+   - 현재 저장소에는 학습자용 58개와 관리자 정답용 29개, 총 87개 노트북이 있습니다.
 3. **인메모리 SQL 실습실 (DuckDB/SQLite 내장)**:
    - 복잡한 데이터베이스 서버 설치 없이도 브라우저에서 바로 `SELECT`, `JOIN`, `GROUP BY` 등 실전 SQL 쿼리를 실행하고 결과를 데이터프레임으로 확인할 수 있습니다.
 4. **라인별 코드 Diff 비교**:
@@ -34,15 +35,17 @@ Code_Study/
 │   └── diff_viewer.py          # 사용자 코드 vs 정답 비교 (Diff Viewer)
 │
 ├── Study_Python/               # [학습자용/업로드용] 교재 및 실습 문제
-│   ├── [0] Python_CheatSheet/  # Python 핵심 문법 가이드 (HTML / MD / PDF)
-│   ├── [1] Numpy/              # Numpy 핵심 문제지 및 정답지
-│   ├── [2] Pandas/             # 데이터 로드, 병합, 피벗, 정렬, EDA 실습 (데이터셋 포함)
-│   ├── [3] Visualization/      # Seaborn, Matplotlib, Folium 지도 시각화
-│   └── [4] Statistics/         # 기술통계, 정규분포/CLT, 확률, 통계적 추론
+│   ├── Reference_CheatSheet/   # Python 핵심 문법 가이드 (HTML / MD / PDF 등)
+│   ├── [0] Python_Basics/      # 기본 문법, 제어 흐름, 함수, 자료 분류, 라이브러리
+│   ├── [1] Numpy/              # 배열과 벡터화 연산
+│   ├── [2] Pandas/             # 데이터 확인, 병합, 집계, 정렬, 종합 EDA
+│   ├── [3] Visualization/      # 분포, 관계, 비교, 추세, 텍스트/지도 시각화
+│   ├── [4] Statistics/         # 기술통계, 정규분포/CLT, 확률, 통계적 추론
+│   ├── [5] EDA_Advanced/       # 이커머스, 헬스케어, HR, 다변량 분석
+│   └── [6] Preprocessing/      # 결측/이상치, 스케일링, 인코딩, 파이프라인
 │
 ├── Study_Python_Answer/        # [관리자용/정답] 모든 실습의 모범 정답지 (.ipynb)
-│
-└── Study_SQL/                  # [추후 확장] SQL 학습 자료 및 문제
+└── README.md                   # 프로젝트, 커리큘럼, Drive 동기화 및 백업 지침
 ```
 
 ---
@@ -88,8 +91,15 @@ Google Drive의 특정 폴더인 **`Study_code`** 내부는 용도에 따라 3�
 | 구분 | Google Drive 폴더명 | 설명 | 포함 내용 |
 | :--- | :--- | :--- | :--- |
 | **[1] 업로드용** | `업로드용` | 학습자 공유 및 대외 배포용 | `Study_Python` (치트시트, 실습 문제, 데이터셋) |
-| **[2] 관리용** | `관리용` | 관리자 및 소스 코드 관리용 | `Study_Python_Answer` (모범 답안 노트북) |
-| **[3] 백업용** | `백업용` | 원본 불변 보존 백업용 | `Study_Python_Backup` (최초 원본 아카이브) |
+| **[2] 관리용** | `관리용` | 날짜별 교재·문제·정답 및 실행 소스 | `YYYY-MM-DD/Study_Python`, `YYYY-MM-DD/Answer`, `Sever` |
+| **[3] 백업용** | `백업용` | 교체 직전 버전 압축 보관 | `YYYY-MM-DD` 아래 단계별 `_Backup` 폴더와 해당 Answer를 함께 담은 ZIP |
+
+### 동기화 및 백업 규칙
+
+- 상세 규칙은 [Study_code 폴더 관리 지침](Study_code_폴더관리지침.md)을 따릅니다.
+- 교체 전에 이전 버전의 단계 폴더에 `_Backup`을 붙이고 같은 버전의 Answer와 함께 압축하여 업데이트 날짜 폴더에 보관합니다.
+- 업로드용은 최신 자료, 관리용 날짜 폴더는 그 버전의 설명·연습문제·Answer, `Sever`는 실행 소스를 보관합니다. 저장소의 실제 답안 경로는 `Study_Python_Answer`를 유지합니다.
+- 파일명·개수·해시와 앱 참조 경로를 확인하고, GitHub 및 Streamlit 배포 상태는 별도로 기록합니다.
 
 ---
 
