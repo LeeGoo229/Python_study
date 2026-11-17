@@ -1,7 +1,7 @@
 """
 app.py
 Code Study — 파이썬 및 SQL 인터랙티브 학습 플랫폼 & 대시보드
-Version: 1.1.0 (Expanded Curriculum: 8 Categories, 30 Units)
+Version: 1.1.1 (Ref: Python Cheat Sheet, [0] Python Basics)
 """
 
 import os

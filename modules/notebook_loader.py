@@ -19,54 +19,54 @@ CURRICULUM = {
         "categories": [
             {
                 "id": "cheatsheet",
-                "name": "📌 [0] Python Cheat Sheet",
+                "name": "📌 Python Cheat Sheet (Ref)",
                 "units": [
                     {
                         "key": "cheatsheet_guide",
                         "title": "Python 핵심 문법 & 치트시트 가이드",
                         "type": "html_md",
-                        "html_path": STUDY_PY_DIR / "[0] Python_CheatSheet" / "Python_Cheat_Sheets_Complete_Guide.html",
-                        "md_path": STUDY_PY_DIR / "[0] Python_CheatSheet" / "Python_Cheat_Sheets_Complete_Guide.md"
+                        "html_path": STUDY_PY_DIR / "Reference_CheatSheet" / "Python_Cheat_Sheets_Complete_Guide.html",
+                        "md_path": STUDY_PY_DIR / "Reference_CheatSheet" / "Python_Cheat_Sheets_Complete_Guide.md"
                     }
                 ]
             },
             {
                 "id": "python_basics",
-                "name": "🐍 [0.5] Python Basics",
+                "name": "🐍 [0] Python Basics",
                 "units": [
                     {
                         "key": "py_basic_1",
                         "title": "1. 기본 문법과 핵심 자료형 (Syntax & DataTypes)",
-                        "theory": STUDY_PY_DIR / "[0.5] Python_Basics" / "Python_Basic_1_Syntax_DataTypes.ipynb",
-                        "practice": STUDY_PY_DIR / "[0.5] Python_Basics" / "Python_Basic_1_Syntax_DataTypes_Practice.ipynb",
+                        "theory": STUDY_PY_DIR / "[0] Python_Basics" / "Python_Basic_1_Syntax_DataTypes.ipynb",
+                        "practice": STUDY_PY_DIR / "[0] Python_Basics" / "Python_Basic_1_Syntax_DataTypes_Practice.ipynb",
                         "answer": STUDY_ANS_DIR / "Python_Basic_1_Syntax_DataTypes_Answer.ipynb"
                     },
                     {
                         "key": "py_basic_2",
                         "title": "2. 조건문, 반복문과 제어 흐름 (Control Flow)",
-                        "theory": STUDY_PY_DIR / "[0.5] Python_Basics" / "Python_Basic_2_Control_Flow.ipynb",
-                        "practice": STUDY_PY_DIR / "[0.5] Python_Basics" / "Python_Basic_2_Control_Flow_Practice.ipynb",
+                        "theory": STUDY_PY_DIR / "[0] Python_Basics" / "Python_Basic_2_Control_Flow.ipynb",
+                        "practice": STUDY_PY_DIR / "[0] Python_Basics" / "Python_Basic_2_Control_Flow_Practice.ipynb",
                         "answer": STUDY_ANS_DIR / "Python_Basic_2_Control_Flow_Answer.ipynb"
                     },
                     {
                         "key": "py_basic_3",
                         "title": "3. 함수 설계, 람다식과 모듈화 (Functions & Modules)",
-                        "theory": STUDY_PY_DIR / "[0.5] Python_Basics" / "Python_Basic_3_Functions_Modules.ipynb",
-                        "practice": STUDY_PY_DIR / "[0.5] Python_Basics" / "Python_Basic_3_Functions_Modules_Practice.ipynb",
+                        "theory": STUDY_PY_DIR / "[0] Python_Basics" / "Python_Basic_3_Functions_Modules.ipynb",
+                        "practice": STUDY_PY_DIR / "[0] Python_Basics" / "Python_Basic_3_Functions_Modules_Practice.ipynb",
                         "answer": STUDY_ANS_DIR / "Python_Basic_3_Functions_Modules_Answer.ipynb"
                     },
                     {
                         "key": "py_basic_4",
                         "title": "4. 데이터와 변수 유형 분류 (Data Classification)",
-                        "theory": STUDY_PY_DIR / "[0.5] Python_Basics" / "Python_Basic_4_Data_Classification.ipynb",
-                        "practice": STUDY_PY_DIR / "[0.5] Python_Basics" / "Python_Basic_4_Data_Classification_Practice.ipynb",
+                        "theory": STUDY_PY_DIR / "[0] Python_Basics" / "Python_Basic_4_Data_Classification.ipynb",
+                        "practice": STUDY_PY_DIR / "[0] Python_Basics" / "Python_Basic_4_Data_Classification_Practice.ipynb",
                         "answer": STUDY_ANS_DIR / "Python_Basic_4_Data_Classification_Answer.ipynb"
                     },
                     {
                         "key": "py_basic_5",
                         "title": "5. 필수 표준 라이브러리와 데이터 생태계 (Library Overview)",
-                        "theory": STUDY_PY_DIR / "[0.5] Python_Basics" / "Python_Basic_5_Library_Overview.ipynb",
-                        "practice": STUDY_PY_DIR / "[0.5] Python_Basics" / "Python_Basic_5_Library_Overview_Practice.ipynb",
+                        "theory": STUDY_PY_DIR / "[0] Python_Basics" / "Python_Basic_5_Library_Overview.ipynb",
+                        "practice": STUDY_PY_DIR / "[0] Python_Basics" / "Python_Basic_5_Library_Overview_Practice.ipynb",
                         "answer": STUDY_ANS_DIR / "Python_Basic_5_Library_Overview_Answer.ipynb"
                     }
                 ]
