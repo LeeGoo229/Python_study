@@ -35,6 +35,7 @@ Study_code/
 - 최신 MD·HTML·PDF를 같은 내용으로 유지한다. 이미지 원본은 `Python_Cheat_Sheets_Images.zip`으로 묶어 보관한다. HTML 또는 MD가 외부 이미지를 직접 참조한다면 실행에 필요한 이미지도 유지한다.
 - 파일명은 앱의 카탈로그 경로와 일치시킨다. 노트북 이름을 바꾸면 `modules/notebook_loader.py`와 문서의 참조도 함께 수정한다.
 - 업로드용 답안 공개 범위는 배포 방식에 따른다. 관리자용 Answer는 관리용에 따로 보관하며, 웹 앱의 답안 비교 기능에 필요한 답안은 배포 저장소의 `Study_Python_Answer`에 유지한다.
+- **이론·연습문제·답안지 동시 작성 원칙:** 이론 자료(`.ipynb`)와 연습문제(`_Practice.ipynb`)를 새로 생성하거나 수정할 때는 반드시 연습문제의 문제 번호·셀 구조·요구사항에 맞춰 대응 답안지(`Study_Python_Answer/*_Answer.ipynb`)도 함께 작성·갱신한다. 초기 버전 답안지를 그대로 두지 않고, 매 업데이트마다 `관리용/YYYY-MM-DD/Answer/`에 최신 전체 답안을 보관한다.
 - Drive는 배포 자료 저장소다. Streamlit은 GitHub의 배포 브랜치에서 실행되므로 Drive 수정만으로 웹 앱이 갱신된다고 표시하지 않는다.
 
 ## 3. 관리용: 버전별 교재와 서버 실행 자료
