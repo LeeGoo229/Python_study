@@ -1,8 +1,8 @@
-# Sever 실행 파일 안내 (2026-11-19 / v1.2.0 기준)
+# Sever 실행 파일 안내 (2026-11-19 / v1.1 / 1.1.0 기준)
 
 | 경로 | 용도 |
 | --- | --- |
-| `app.py` | Streamlit 앱 시작점 (`v1.2.0`, 2026-11-19 기준) |
+| `app.py` | Streamlit 앱 시작점 (`v1.1.0`, 2026-11-19 기준) |
 | `requirements.txt` | `scikit-learn>=1.3.0`을 포함한 실행 의존성 |
 | `modules/notebook_loader.py` | 교재 카탈로그(39개 실습 단원 + Reference 1개) 및 노트북 로더 |
 | `modules/python_runner.py` | 파이썬 실습 실행 |
@@ -23,4 +23,4 @@ python -m pip install -r requirements.txt
 streamlit run app.py
 ```
 
-- GitHub `main` 브랜치 푸시 시 Streamlit Community Cloud 앱이 `app.py` (`v1.2.0`) 기준으로 자동 최신화됩니다.
+- GitHub `main` 브랜치 푸시 시 Streamlit Community Cloud 앱이 `app.py` (`v1.1.0`) 기준으로 자동 최신화됩니다.
