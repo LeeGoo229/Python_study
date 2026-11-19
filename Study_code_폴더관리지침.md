@@ -31,7 +31,7 @@ Study_code/
 
 ## 2. 업로드용: 현재 배포 자료
 
-- Streamlit에서 사용하는 최신 교재·설명·연습문제·데이터만 보관한다. 현재 단계는 `[0] Python_Basics`부터 `[6] Preprocessing`까지이며, 참조 자료는 `Reference_CheatSheet`에 둔다.
+- Streamlit에서 사용하는 최신 교재·설명·연습문제·데이터만 보관한다. 현재 단계는 `[0] Python_Basics`부터 `[7] Machine_Learning`까지이며, 참조 자료는 `Reference_CheatSheet`에 둔다.
 - 최신 MD·HTML·PDF를 같은 내용으로 유지한다. 이미지 원본은 `Python_Cheat_Sheets_Images.zip`으로 묶어 보관한다. HTML 또는 MD가 외부 이미지를 직접 참조한다면 실행에 필요한 이미지도 유지한다.
 - 파일명은 앱의 카탈로그 경로와 일치시킨다. 노트북 이름을 바꾸면 `modules/notebook_loader.py`와 문서의 참조도 함께 수정한다.
 - 업로드용 답안 공개 범위는 배포 방식에 따른다. 관리자용 Answer는 관리용에 따로 보관하며, 웹 앱의 답안 비교 기능에 필요한 답안은 배포 저장소의 `Study_Python_Answer`에 유지한다.
