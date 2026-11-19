@@ -277,6 +277,84 @@ CURRICULUM = {
                         "theory": STUDY_PY_DIR / "[6] Preprocessing" / "Preprocessing_4_Pipeline_Integration.ipynb",
                         "practice": STUDY_PY_DIR / "[6] Preprocessing" / "Preprocessing_4_Pipeline_Integration_Practice.ipynb",
                         "answer": STUDY_ANS_DIR / "Preprocessing_4_Pipeline_Integration_Answer.ipynb"
+                    },
+                    {
+                        "key": "prep_5",
+                        "title": "5. 와인 데이터 탐색과 스케일링",
+                        "theory": STUDY_PY_DIR / "[6] Preprocessing" / "Lv2_Python_1117_Data_Pre_processing_wine.ipynb",
+                        "practice": STUDY_PY_DIR / "[6] Preprocessing" / "Lv2_Python_1117_Data_Pre_processing_wine_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1117_Data_Pre_processing_wine_Answer.ipynb"
+                    },
+                    {
+                        "key": "prep_6",
+                        "title": "6. 신용 데이터 전처리 과제",
+                        "theory": STUDY_PY_DIR / "[6] Preprocessing" / "Lv2_Python_1117_Data_Pre_processing_TASK.ipynb",
+                        "practice": STUDY_PY_DIR / "[6] Preprocessing" / "Lv2_Python_1117_Data_Pre_processing_TASK_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1117_Data_Pre_processing_TASK_Answer.ipynb"
+                    }
+                ]
+            },
+            {
+                "id": "machine_learning",
+                "name": "🤖 [7] 머신러닝",
+                "units": [
+                    {
+                        "key": "ml_1",
+                        "title": "1. 분류와 회귀",
+                        "theory": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1118_Classification_Regression.ipynb",
+                        "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1118_Classification_Regression_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1118_Classification_Regression_Answer.ipynb"
+                    },
+                    {
+                        "key": "ml_2",
+                        "title": "2. K-최근접 이웃 분류",
+                        "theory": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1118_KNN.ipynb",
+                        "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1118_KNN_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1118_KNN_Answer.ipynb"
+                    },
+                    {
+                        "key": "ml_3",
+                        "title": "3. 엔트로피와 특성 중요도",
+                        "theory": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1118_FeatureSelection_Entropy.ipynb",
+                        "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1118_FeatureSelection_Entropy_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1118_FeatureSelection_Entropy_Answer.ipynb"
+                    },
+                    {
+                        "key": "ml_4",
+                        "title": "4. 의사결정나무와 랜덤 포레스트 회귀",
+                        "theory": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1118_DecisionTree_regression_house.ipynb",
+                        "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1118_DecisionTree_regression_house_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1118_DecisionTree_regression_house_Answer.ipynb",
+                        "data_dir": STUDY_PY_DIR / "[7] Machine_Learning" / "data"
+                    },
+                    {
+                        "key": "ml_5",
+                        "title": "5. 단순 선형 회귀와 Diabetes 데이터",
+                        "theory": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1119_Regression.diabetes.ipynb",
+                        "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1119_Regression.diabetes_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1119_Regression.diabetes_Answer.ipynb"
+                    },
+                    {
+                        "key": "ml_6",
+                        "title": "6. 다중 선형 회귀와 Iris 데이터",
+                        "theory": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1119_MultipleRegression.iris.ipynb",
+                        "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1119_MultipleRegression.iris_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1119_MultipleRegression.iris_Answer.ipynb"
+                    },
+                    {
+                        "key": "ml_7",
+                        "title": "7. 제곱합 분해와 결정계수",
+                        "theory": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1119_SST_SSR_SSE__R2.ipynb",
+                        "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1119_SST_SSR_SSE__R2_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1119_SST_SSR_SSE__R2_Answer.ipynb"
+                    },
+                    {
+                        "key": "ml_8",
+                        "title": "8. 신경망 주택 가격 회귀",
+                        "theory": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1119_Regression_nn_house_price.ipynb",
+                        "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1119_Regression_nn_house_price_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1119_Regression_nn_house_price_Answer.ipynb",
+                        "data_dir": STUDY_PY_DIR / "[7] Machine_Learning" / "data"
                     }
                 ]
             }

@@ -42,7 +42,8 @@ Code_Study/
 │   ├── [3] Visualization/      # 분포, 관계, 비교, 추세, 텍스트/지도 시각화
 │   ├── [4] Statistics/         # 기술통계, 정규분포/CLT, 확률, 통계적 추론
 │   ├── [5] EDA_Advanced/       # 이커머스, 헬스케어, HR, 다변량 분석
-│   └── [6] Preprocessing/      # 결측/이상치, 스케일링, 인코딩, 파이프라인
+│   ├── [6] Preprocessing/      # 결측/이상치, 스케일링, 인코딩, 파이프라인
+│   └── [7] Machine_Learning/   # 분류, 회귀 및 실습 데이터
 │
 ├── Study_Python_Answer/        # [관리자용/정답] 모든 실습의 모범 정답지 (.ipynb)
 └── README.md                   # 프로젝트, 커리큘럼, Drive 동기화 및 백업 지침

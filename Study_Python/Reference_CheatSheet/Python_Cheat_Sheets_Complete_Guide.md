@@ -230,6 +230,35 @@ joblib.dump(grid.best_estimator_, 'model.pkl')
 model = joblib.load('model.pkl')
 ```
 
+
+### scikit-learn 설치와 커리큘럼 실습
+
+scikit-learn은 분류, 회귀, 전처리 및 모델 평가를 위한 파이썬 라이브러리입니다.
+
+설치 명령은 python -m pip install "scikit-learn>=1.3.0" 입니다.
+
+아래 예제는 Iris를 분할하고 훈련 데이터로만 표준화와 KNN을 학습합니다.
+
+```python
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+
+X, y = load_iris(return_X_y=True)
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
+model = make_pipeline(StandardScaler(), KNeighborsClassifier(n_neighbors=5))
+model.fit(X_train, y_train)
+print(model.score(X_test, y_test))
+```
+
+- [6] Preprocessing에서는 와인 스케일링과 신용 데이터 결측 처리·인코딩을 실습합니다.
+- [7] Machine Learning에서는 KNN, 트리 특성 중요도, 선형·신경망 회귀를 실습합니다.
+- 분류는 정확도와 클래스별 지표를, 회귀는 MAE, MSE, R²를 확인하세요.
+
 ---
 
 <span id="sec-6"></span>
