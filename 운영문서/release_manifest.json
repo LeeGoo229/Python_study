@@ -1,0 +1,98 @@
+{
+  "default_version": "v1.3",
+  "versions": [
+    {
+      "id": "v1.0",
+      "label": "v1.0 · baseline (2026-11-17)",
+      "date": "2026-11-17",
+      "commit": "12a70fa49c7e6620725d690e29b9a70f13c867ae",
+      "description_file": "운영문서/버전_설명_2026-11-17.md",
+      "summary": "최초 관리 기준본 (Cheat Sheet + [0] Python Basics ~ [6] Preprocessing 1~4)",
+      "unit_keys": [
+        "cheatsheet_guide",
+        "py_basic_1",
+        "py_basic_2",
+        "py_basic_3",
+        "py_basic_4",
+        "py_basic_5",
+        "numpy_1",
+        "numpy_2",
+        "pandas_1",
+        "pandas_2",
+        "pandas_3",
+        "pandas_4",
+        "eda",
+        "vis_1",
+        "vis_2",
+        "vis_3",
+        "vis_4",
+        "vis_5",
+        "stat_1",
+        "stat_2",
+        "stat_3",
+        "stat_4",
+        "eda_adv_1",
+        "eda_adv_2",
+        "eda_adv_3",
+        "eda_adv_4",
+        "prep_1",
+        "prep_2",
+        "prep_3",
+        "prep_4"
+      ]
+    },
+    {
+      "id": "v1.1",
+      "label": "v1.1 · 전처리 심화 & ML 기초 (2026-11-19)",
+      "date": "2026-11-19",
+      "description_file": "운영문서/버전_설명_2026-11-19.md",
+      "summary": "[6] Preprocessing 5~6 추가 및 [7] Machine_Learning 1~8 신설",
+      "extends": "v1.0",
+      "added_units": [
+        "prep_5",
+        "prep_6",
+        "ml_1",
+        "ml_2",
+        "ml_3",
+        "ml_4",
+        "ml_5",
+        "ml_6",
+        "ml_7",
+        "ml_8"
+      ]
+    },
+    {
+      "id": "v1.2",
+      "label": "v1.2 · ML 확장 & 모델 평가 (2026-11-20)",
+      "date": "2026-11-20",
+      "description_file": "운영문서/버전_설명_2026-11-20.md",
+      "summary": "[7] Machine_Learning 9~11 추가 및 [8] Model_Evaluation 1~4 신설",
+      "extends": "v1.1",
+      "added_units": [
+        "ml_9",
+        "ml_10",
+        "ml_11",
+        "eval_1",
+        "eval_2",
+        "eval_3",
+        "eval_4"
+      ]
+    },
+    {
+      "id": "v1.3",
+      "label": "v1.3 · SVM·군집화·연관규칙 (2026-11-24, 최신)",
+      "date": "2026-11-24",
+      "description_file": "운영문서/버전_설명_2026-11-24.md",
+      "summary": "[7] Machine_Learning 12~17(SVM, K-Means, Elbow, Silhouette, Apriori) 추가 및 신경망 주석 보강",
+      "extends": "v1.2",
+      "added_units": [
+        "ml_12",
+        "ml_13",
+        "ml_14",
+        "ml_15",
+        "ml_16",
+        "ml_17"
+      ]
+    }
+  ]
+}

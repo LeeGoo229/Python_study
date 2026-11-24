@@ -6,11 +6,12 @@ Jupyter Notebook (.ipynb) 파싱 및 단원별 이론/실습/정답 로더
 import json
 import re
 from pathlib import Path
-from typing import Dict, List, Any, Optional
+from typing import Dict, List, Any, Optional, Set
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 STUDY_PY_DIR = BASE_DIR / "Study_Python"
 STUDY_ANS_DIR = BASE_DIR / "Study_Python_Answer"
+RELEASE_MANIFEST_PATH = BASE_DIR / "운영문서" / "release_manifest.json"
 
 # 전체 커리큘럼 카탈로그
 CURRICULUM = {
@@ -355,6 +356,106 @@ CURRICULUM = {
                         "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1119_Regression_nn_house_price_Practice.ipynb",
                         "answer": STUDY_ANS_DIR / "Lv2_Python_1119_Regression_nn_house_price_Answer.ipynb",
                         "data_dir": STUDY_PY_DIR / "[7] Machine_Learning" / "data"
+                    },
+                    {
+                        "key": "ml_9",
+                        "title": "9. 의사결정나무 분류 기초 (Decision Tree)",
+                        "theory": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1118_DecisionTree.ipynb",
+                        "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1118_DecisionTree_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1118_DecisionTree_Answer.ipynb"
+                    },
+                    {
+                        "key": "ml_10",
+                        "title": "10. 의사결정나무 Study 데이터 실습 (Decision Tree Study)",
+                        "theory": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1119_DecisionTree_Study.ipynb",
+                        "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1119_DecisionTree_Study_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1119_DecisionTree_Study_Answer.ipynb",
+                        "data_dir": STUDY_PY_DIR / "[7] Machine_Learning" / "data"
+                    },
+                    {
+                        "key": "ml_11",
+                        "title": "11. 랜덤 포레스트 분류 (Random Forest)",
+                        "theory": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1119_RandomForest.ipynb",
+                        "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1119_RandomForest_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1119_RandomForest_Answer.ipynb"
+                    },
+                    {
+                        "key": "ml_12",
+                        "title": "12. 특성 변환과 선형 분리 (Squared Features)",
+                        "theory": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1123_Squared_features_test.ipynb",
+                        "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1123_Squared_features_test_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1123_Squared_features_test_Answer.ipynb"
+                    },
+                    {
+                        "key": "ml_13",
+                        "title": "13. 서포트 벡터 머신 타이타닉 분류 (SVM Titanic)",
+                        "theory": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1124_SVM_Titanic.ipynb",
+                        "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1124_SVM_Titanic_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1124_SVM_Titanic_Answer.ipynb",
+                        "data_dir": STUDY_PY_DIR / "[8] Model_Evaluation" / "data"
+                    },
+                    {
+                        "key": "ml_14",
+                        "title": "14. K-평균 군집화와 Iris 품종 비교 (K-Means Clustering)",
+                        "theory": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1124_clustering_iris.ipynb",
+                        "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1124_clustering_iris_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1124_clustering_iris_Answer.ipynb"
+                    },
+                    {
+                        "key": "ml_15",
+                        "title": "15. 엘보우 기법으로 최적 군집 수 찾기 (Elbow Method)",
+                        "theory": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1124_clustering_elbow.ipynb",
+                        "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1124_clustering_elbow_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1124_clustering_elbow_Answer.ipynb"
+                    },
+                    {
+                        "key": "ml_16",
+                        "title": "16. 실루엣 스코어 군집 평가 (Silhouette Score)",
+                        "theory": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1124_clustering_silhouette.ipynb",
+                        "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1124_clustering_silhouette_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1124_clustering_silhouette_Answer.ipynb"
+                    },
+                    {
+                        "key": "ml_17",
+                        "title": "17. 장바구니 연관 규칙 분석 (Association Rule & Apriori)",
+                        "theory": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1124_AssociationRule.ipynb",
+                        "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1124_AssociationRule_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1124_AssociationRule_Answer.ipynb"
+                    }
+                ]
+            },
+            {
+                "id": "model_evaluation",
+                "name": "📏 [8] 모델 평가 & 로지스틱 회귀",
+                "units": [
+                    {
+                        "key": "eval_1",
+                        "title": "1. 혼동 행렬 기초와 시각화 (Confusion Matrix 1)",
+                        "theory": STUDY_PY_DIR / "[8] Model_Evaluation" / "Lv2_Python_1120_confusion_matrix_1.ipynb",
+                        "practice": STUDY_PY_DIR / "[8] Model_Evaluation" / "Lv2_Python_1120_confusion_matrix_1_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1120_confusion_matrix_1_Answer.ipynb"
+                    },
+                    {
+                        "key": "eval_2",
+                        "title": "2. 분류 지표와 클래스 불균형 (Confusion Matrix 2 & F1)",
+                        "theory": STUDY_PY_DIR / "[8] Model_Evaluation" / "Lv2_Python_1120_confusion_matrix_2.ipynb",
+                        "practice": STUDY_PY_DIR / "[8] Model_Evaluation" / "Lv2_Python_1120_confusion_matrix_2_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1120_confusion_matrix_2_Answer.ipynb"
+                    },
+                    {
+                        "key": "eval_3",
+                        "title": "3. 로지스틱 회귀 타이타닉 생존 예측 (Logistic Regression Titanic)",
+                        "theory": STUDY_PY_DIR / "[8] Model_Evaluation" / "Lv2_Python_1120_logi_titanic.ipynb",
+                        "practice": STUDY_PY_DIR / "[8] Model_Evaluation" / "Lv2_Python_1120_logi_titanic_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1120_logi_titanic_Answer.ipynb",
+                        "data_dir": STUDY_PY_DIR / "[8] Model_Evaluation" / "data"
+                    },
+                    {
+                        "key": "eval_4",
+                        "title": "4. 로지스틱 회귀 유방암 실습 (Logistic Regression Breast Cancer)",
+                        "theory": STUDY_PY_DIR / "[8] Model_Evaluation" / "Lv2_Python_1120_logi_bc_P.ipynb",
+                        "practice": STUDY_PY_DIR / "[8] Model_Evaluation" / "Lv2_Python_1120_logi_bc_P_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1120_logi_bc_P_Answer.ipynb"
                     }
                 ]
             }
@@ -369,6 +470,161 @@ def get_unit_by_key(unit_key: str) -> Optional[Dict[str, Any]]:
             if unit["key"] == unit_key:
                 return unit
     return None
+
+
+def _load_raw_manifest() -> Dict[str, Any]:
+    """운영문서/release_manifest.json 로드 (미존재 시 전체 커리큘럼 단일 기본 버전 반환)"""
+    if RELEASE_MANIFEST_PATH.exists():
+        with open(RELEASE_MANIFEST_PATH, "r", encoding="utf-8") as f:
+            return json.load(f)
+
+    all_keys = [
+        unit["key"]
+        for cat in CURRICULUM["python"]["categories"]
+        for unit in cat.get("units", [])
+    ]
+    return {
+        "default_version": "latest",
+        "versions": [
+            {
+                "id": "latest",
+                "label": "최신 전체 커리큘럼",
+                "date": "",
+                "description_file": "",
+                "summary": "전체 등록 커리큘럼",
+                "unit_keys": all_keys,
+            }
+        ],
+    }
+
+
+def _resolve_version_unit_keys(
+    version_id: str,
+    version_map: Dict[str, Dict[str, Any]],
+    visited: Optional[Set[str]] = None,
+) -> List[str]:
+    """버전 매니페스트의 extends / added_units / removed_units를 재귀적으로 해석"""
+    if visited is None:
+        visited = set()
+    if version_id in visited or version_id not in version_map:
+        return []
+    visited.add(version_id)
+
+    entry = version_map[version_id]
+    keys: List[str] = []
+    parent_id = entry.get("extends")
+    if parent_id:
+        keys.extend(_resolve_version_unit_keys(parent_id, version_map, visited))
+
+    if "unit_keys" in entry:
+        keys = list(entry["unit_keys"])
+
+    for added in entry.get("added_units", []):
+        if added not in keys:
+            keys.append(added)
+
+    removed = set(entry.get("removed_units", []))
+    if removed:
+        keys = [k for k in keys if k not in removed]
+
+    return keys
+
+
+def get_release_versions() -> List[Dict[str, Any]]:
+    """확장 가능한 릴리즈 매니페스트 기반 버전 목록과 각 버전의 필터링 통계 반환"""
+    manifest = _load_raw_manifest()
+    raw_versions = manifest.get("versions", [])
+    version_map = {v["id"]: v for v in raw_versions if "id" in v}
+
+    resolved_list: List[Dict[str, Any]] = []
+    for entry in raw_versions:
+        vid = entry.get("id")
+        if not vid:
+            continue
+        unit_keys = _resolve_version_unit_keys(vid, version_map)
+        allowed = set(unit_keys)
+        filtered_cats = [
+            cat
+            for cat in CURRICULUM["python"]["categories"]
+            if any(u["key"] in allowed for u in cat.get("units", []))
+        ]
+        unit_count = sum(
+            1
+            for cat in filtered_cats
+            for u in cat.get("units", [])
+            if u["key"] in allowed
+        )
+        resolved_list.append(
+            {
+                **entry,
+                "resolved_unit_keys": unit_keys,
+                "category_count": len(filtered_cats),
+                "unit_count": unit_count,
+            }
+        )
+    return resolved_list
+
+
+def get_default_version_id() -> str:
+    """기본 선택 릴리즈 버전 ID 반환"""
+    manifest = _load_raw_manifest()
+    versions = manifest.get("versions", [])
+    default_id = manifest.get("default_version")
+    if default_id and any(v.get("id") == default_id for v in versions):
+        return default_id
+    return versions[-1]["id"] if versions else "latest"
+
+
+def get_curriculum_by_version(version_id: Optional[str] = None) -> List[Dict[str, Any]]:
+    """선택된 릴리즈 버전 매니페스트에 해당하는 대단원·소단원 목록만 필터링하여 반환"""
+    all_categories = CURRICULUM["python"]["categories"]
+    if not version_id:
+        return all_categories
+
+    versions = get_release_versions()
+    target = next((v for v in versions if v["id"] == version_id), None)
+    if not target:
+        return all_categories
+
+    allowed_keys = set(target.get("resolved_unit_keys", []))
+    filtered_categories: List[Dict[str, Any]] = []
+    for category in all_categories:
+        filtered_units = [
+            unit for unit in category.get("units", []) if unit["key"] in allowed_keys
+        ]
+        if filtered_units:
+            filtered_categories.append({**category, "units": filtered_units})
+    return filtered_categories
+
+
+def load_version_description(version_id: str) -> Dict[str, Any]:
+    """선택된 릴리즈 버전 메타데이터와 운영문서/버전_설명_*.md 요약 본문 반환"""
+    versions = get_release_versions()
+    target = next((v for v in versions if v["id"] == version_id), None)
+    if not target:
+        return {
+            "id": version_id,
+            "label": version_id,
+            "date": "",
+            "summary": "",
+            "markdown": "선택한 버전 정보를 찾을 수 없습니다.",
+        }
+
+    desc_rel = target.get("description_file", "")
+    markdown = ""
+    if desc_rel:
+        desc_path = BASE_DIR / desc_rel
+        if desc_path.exists():
+            markdown = desc_path.read_text(encoding="utf-8")
+        else:
+            markdown = f"버전 설명 문서를 찾을 수 없습니다: `{desc_rel}`"
+    else:
+        markdown = target.get("summary", "")
+
+    return {
+        **target,
+        "markdown": markdown,
+    }
 
 def sanitize_markdown(text: str) -> str:
     """

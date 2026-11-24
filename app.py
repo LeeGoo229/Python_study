@@ -1,7 +1,7 @@
 """
 app.py
 Code Study — 파이썬 및 SQL 인터랙티브 학습 플랫폼 & 대시보드
-Version: 1.1.0 (2026-11-19, Ref: Python Cheat Sheet, [0] Python Basics)
+Version: 1.3.0 (2026-11-24, Ref: Python Cheat Sheet, [0] Python Basics ~ [8] Model_Evaluation)
 """
 
 import os
@@ -13,6 +13,10 @@ from pathlib import Path
 from modules.notebook_loader import (
     CURRICULUM,
     get_unit_by_key,
+    get_release_versions,
+    get_default_version_id,
+    get_curriculum_by_version,
+    load_version_description,
     load_theory_content,
     load_practice_and_answers,
     load_cheat_sheet_sections,
@@ -107,37 +111,76 @@ st.divider()
 # [모드 1] 🐍 Python 실습실
 # ====================================================
 if selected_subject == "🐍 Python 실습실":
-    # 사이드바: 커리큘럼 네비게이션
+    # 사이드바: 릴리즈 버전 & 커리큘럼 네비게이션
     with st.sidebar:
+        st.header("🏷️ 릴리즈 버전 (Step)")
+        release_versions = get_release_versions()
+        default_ver_id = get_default_version_id()
+        version_ids = [v["id"] for v in release_versions]
+        default_ver_idx = version_ids.index(default_ver_id) if default_ver_id in version_ids else len(version_ids) - 1
+        version_labels = {v["id"]: v["label"] for v in release_versions}
+
+        selected_version_id = st.selectbox(
+            "교육 Step / 버전 선택",
+            options=version_ids,
+            index=default_ver_idx,
+            format_func=lambda vid: version_labels.get(vid, vid),
+            key="selected_release_version",
+        )
+        version_desc = load_version_description(selected_version_id)
+        st.caption(
+            f"📦 {version_desc.get('category_count', 0)}개 대단원 · "
+            f"{version_desc.get('unit_count', 0)}개 학습 항목"
+        )
+        with st.expander("📋 버전 설명 요약 보기", expanded=False):
+            if version_desc.get("summary"):
+                st.markdown(f"**요약:** {version_desc['summary']}")
+                st.markdown("---")
+            st.markdown(version_desc.get("markdown", ""))
+
+        st.markdown("---")
         st.header("📚 Python 커리큘럼")
-        
-        categories = CURRICULUM["python"]["categories"]
+
+        categories = get_curriculum_by_version(selected_version_id)
         cat_names = [c["name"] for c in categories]
-        selected_cat_name = st.selectbox("대단원 선택", cat_names)
-        
+        selected_cat_name = st.selectbox(
+            "대단원 선택",
+            cat_names,
+            key=f"cat_select_{selected_version_id}",
+        )
+
         selected_cat = next(c for c in categories if c["name"] == selected_cat_name)
         unit_names = [u["title"] for u in selected_cat["units"]]
-        selected_unit_title = st.selectbox("소단원 선택", unit_names)
-        
+        selected_unit_title = st.selectbox(
+            "소단원 선택",
+            unit_names,
+            key=f"unit_select_{selected_version_id}_{selected_cat['id']}",
+        )
+
         unit_info = next(u for u in selected_cat["units"] if u["title"] == selected_unit_title)
-        
+
         st.markdown("---")
         # 학습 완료 체크
         is_done = unit_info["key"] in st.session_state["completed_units"]
-        if st.checkbox("✅ 이 단원 학습 완료 체크", value=is_done):
+        if st.checkbox("✅ 이 단원 학습 완료 체크", value=is_done, key=f"done_{unit_info['key']}"):
             st.session_state["completed_units"].add(unit_info["key"])
         else:
             st.session_state["completed_units"].discard(unit_info["key"])
-            
-        # 전체 진도율 계산
+
+        # 전체 진도율 계산 (선택된 버전 기준)
         total_units = sum(len(c["units"]) for c in categories)
-        done_count = len(st.session_state["completed_units"])
+        done_count = sum(
+            1
+            for c in categories
+            for u in c["units"]
+            if u["key"] in st.session_state["completed_units"]
+        )
         progress_pct = done_count / total_units if total_units > 0 else 0
-        st.write(f"📊 **전체 학습 진도율**: {done_count}/{total_units} ({int(progress_pct*100)}%)")
+        st.write(f"📊 **전체 학습 진도율 ({selected_version_id})**: {done_count}/{total_units} ({int(progress_pct*100)}%)")
         st.progress(progress_pct)
-        
+
         st.markdown("---")
-        st.info("💡 **배포 안내**: GitHub에 푸시된 최신 코드로 실시간 실행 중입니다.")
+        st.info(f"💡 **배포 안내**: GitHub `main` 브랜치 기준 `{selected_version_id}` 스냅샷으로 실행 중입니다.")
 
     # [케이스 A] 치트시트 단원
     if unit_info.get("type") == "html_md":

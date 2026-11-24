@@ -2,7 +2,7 @@
 
 > **Python 데이터 분석 & 시각화 & 기초 통계 & SQL 쿼리 실습을 한곳에서 제공하는 인터랙티브 웹 대시보드**
 >
-> 🌐 **GitHub Repository**: [https://github.com/LeeGoo229/Code_Study](https://github.com/LeeGoo229/Code_Study)
+> 🌐 **GitHub Repository**: [https://github.com/LeeGoo229/Python_study](https://github.com/LeeGoo229/Python_study)
 
 ---
 
@@ -10,9 +10,10 @@
 
 1. **원스톱 인터랙티브 학습 환경 (Zero-Setup)**:
    - 로컬에 Python이나 Jupyter Notebook을 설치하지 않아도, 웹 브라우저에서 바로 **이론 학습 ➔ 문제 풀이 ➔ 실시간 코드 실행 ➔ 모범 답안 비교**가 가능합니다.
-2. **검증된 주피터 노트북 87종 연동**:
+2. **검증된 주피터 노트북 156종 연동**:
    - `Study_Python`의 핵심 개념과 연습문제(`_Practice.ipynb`), 그리고 `Study_Python_Answer`의 모범 답안(`_Answer.ipynb`)이 실시간 동기화됩니다.
-   - 현재 저장소에는 학습자용 58개와 관리자 정답용 29개, 총 87개 노트북이 있습니다.
+   - 현재 저장소에는 학습자용 104개와 관리자 정답용 52개, 총 156개 노트북(52개 실습 단원 + Reference 1개 = 총 53개 카탈로그 항목)이 있습니다.
+   - 사이드바에서 릴리즈 버전(`v1.0`, `v1.1`, `v1.2`, `v1.3`)을 전환하며 단계별 커리큘럼과 버전 설명을 열람할 수 있습니다.
 3. **인메모리 SQL 실습실 (DuckDB/SQLite 내장)**:
    - 복잡한 데이터베이스 서버 설치 없이도 브라우저에서 바로 `SELECT`, `JOIN`, `GROUP BY` 등 실전 SQL 쿼리를 실행하고 결과를 데이터프레임으로 확인할 수 있습니다.
 4. **라인별 코드 Diff 비교**:
@@ -43,7 +44,8 @@ Code_Study/
 │   ├── [4] Statistics/         # 기술통계, 정규분포/CLT, 확률, 통계적 추론
 │   ├── [5] EDA_Advanced/       # 이커머스, 헬스케어, HR, 다변량 분석
 │   ├── [6] Preprocessing/      # 결측/이상치, 스케일링, 인코딩, 파이프라인
-│   └── [7] Machine_Learning/   # 분류, 회귀 및 실습 데이터
+│   ├── [7] Machine_Learning/   # 분류, 회귀, 트리/랜덤포레스트 및 실습 데이터 (Drive [11]_ML_1, [13]_ML_2 반영)
+│   └── [8] Model_Evaluation/   # 혼동 행렬, 분류 지표, 로지스틱 회귀, 평가 PDF 및 데이터 (Drive [12]_Evaluation 반영)
 │
 ├── Study_Python_Answer/        # [관리자용/정답] 모든 실습의 모범 정답지 (.ipynb)
 └── README.md                   # 프로젝트, 커리큘럼, Drive 동기화 및 백업 지침
@@ -58,7 +60,7 @@ Code_Study/
 1. [Streamlit Community Cloud](https://share.streamlit.io/)에 접속하여 GitHub 계정으로 로그인합니다.
 2. **`New app`** 버튼을 클릭합니다.
 3. 설정 입력:
-   - **Repository**: `LeeGoo229/Code_Study`
+   - **Repository**: `LeeGoo229/Python_study`
    - **Branch**: `main`
    - **Main file path**: `app.py`
    - **App URL**: 원하는 도메인 입력 (예: `code-study.streamlit.app`)
@@ -69,8 +71,8 @@ Code_Study/
 
 ```bash
 # 1. 리포지토리 클론
-git clone https://github.com/LeeGoo229/Code_Study.git
-cd Code_Study
+git clone https://github.com/LeeGoo229/Python_study.git
+cd Python_study
 
 # 2. 가상환경 생성 및 패키지 설치
 python3 -m venv .venv
