@@ -20,6 +20,9 @@
    - 내가 작성한 코드와 모범 답안을 한눈에 비교해 다른 점과 개선점을 파악할 수 있습니다.
 5. **학습 진도율 관리**:
    - 단원별 완료 체크박스와 실시간 프로그레스 바를 지원합니다.
+6. **초보자 친화적 개념 퀴즈 (`📝 퀴즈 풀기` & `[📝 4. 개념 퀴즈]` 탭)**:
+   - `[0] Python_Basics`~`[8] Model_Evaluation` 및 `SQL 기초`를 아우르는 빈칸 넣기·주관식·O/X 퀴즈 Bank(30문항)를 제공합니다.
+   - 단원 내 `[📝 4. 개념 퀴즈]` 탭과 상단 글로벌 `[📝 퀴즈 풀기]` 모드에서 릴리즈 버전(`v1.0`~`v1.3`) 연동 필터링, 힌트 토글, 공백/대소문자 유연 채점, 알기 쉬운 해설, 점수·정답률·다시풀기를 지원합니다.
 
 ---
 
@@ -33,7 +36,11 @@ Code_Study/
 │   ├── notebook_loader.py      # .ipynb 파서 및 커리큘럼 카탈로그
 │   ├── python_runner.py        # 파이썬 코드 안전 실행 & 시각화/표 캡처
 │   ├── sql_runner.py           # DuckDB/SQLite 인메모리 쿼리 엔진
-│   └── diff_viewer.py          # 사용자 코드 vs 정답 비교 (Diff Viewer)
+│   ├── diff_viewer.py          # 사용자 코드 vs 정답 비교 (Diff Viewer)
+│   └── quiz_manager.py         # 개념 퀴즈 Bank, 버전 필터링 및 유연한 채점 엔진
+│
+├── tests/
+│   └── test_quiz_and_app.py    # 퀴즈 채점 단위 테스트 및 Streamlit AppTest UI 통합 테스트
 │
 ├── Study_Python/               # [학습자용/업로드용] 교재 및 실습 문제
 │   ├── Reference_CheatSheet/   # Python 핵심 문법 가이드 (HTML / MD / PDF 등)

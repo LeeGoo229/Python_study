@@ -25,6 +25,13 @@ from modules.notebook_loader import (
 from modules.python_runner import run_python_code
 from modules.sql_runner import SQLEngine, SQL_CURRICULUM
 from modules.diff_viewer import generate_diff_html
+from modules.quiz_manager import (
+    QUIZ_TYPE_LABELS,
+    calculate_quiz_summary,
+    get_quiz_categories,
+    get_quizzes,
+    grade_answer,
+)
 
 # 페이지 기본 설정
 st.set_page_config(
@@ -90,18 +97,133 @@ if "completed_units" not in st.session_state:
     st.session_state["completed_units"] = set()
 if "sql_engine" not in st.session_state:
     st.session_state["sql_engine"] = SQLEngine()
+if "quiz_results" not in st.session_state:
+    st.session_state["quiz_results"] = {}
+
+
+def _get_quiz_user_input(q: dict, input_key: str) -> str:
+    """퀴즈 문항 유형에 맞는 입력 위젯을 렌더링하고 사용자 입력값을 반환합니다."""
+    if q.get("type") == "ox":
+        choice = st.radio(
+            "정답 선택 (O / X):",
+            options=["선택 안 함", "O", "X"],
+            horizontal=True,
+            key=input_key,
+        )
+        return "" if choice == "선택 안 함" else choice
+    return st.text_input(
+        "정답 입력:",
+        key=input_key,
+        placeholder="정답을 입력하세요 (대소문자·앞뒤 공백 무관)",
+    )
+
+
+def _reset_quiz_scope(questions: list, scope_key: str) -> None:
+    """해당 퀴즈 스코프의 입력값과 채점 결과를 초기화합니다."""
+    st.session_state["quiz_results"].pop(scope_key, None)
+    for q in questions:
+        input_key = f"quiz_input_{scope_key}_{q['id']}"
+        hint_key = f"quiz_hint_{scope_key}_{q['id']}"
+        if q.get("type") == "ox":
+            st.session_state[input_key] = "선택 안 함"
+        else:
+            st.session_state[input_key] = ""
+        st.session_state[hint_key] = False
+
+
+def render_quiz_section(questions: list, scope_key: str) -> None:
+    """퀴즈 문항 목록에 대해 점수판, 힌트 토글, 즉시 채점, 다시풀기 UI를 렌더링합니다."""
+    if not questions:
+        st.info("선택한 조건에 해당하는 퀴즈 문항이 없습니다.")
+        return
+
+    scope_results = st.session_state["quiz_results"].setdefault(scope_key, {})
+    summary_placeholder = st.container()
+
+    act_col1, act_col2, _ = st.columns([1.6, 1.6, 4.8])
+    with act_col1:
+        grade_all_clicked = st.button(
+            "✅ 전체 채점하기",
+            type="primary",
+            use_container_width=True,
+            key=f"grade_all_{scope_key}",
+        )
+    with act_col2:
+        if st.button(
+            "🔄 다시 풀기",
+            use_container_width=True,
+            key=f"reset_all_{scope_key}",
+        ):
+            _reset_quiz_scope(questions, scope_key)
+            st.rerun()
+
+    st.markdown("---")
+
+    for idx, q in enumerate(questions, start=1):
+        q_id = q["id"]
+        type_badge = QUIZ_TYPE_LABELS.get(q.get("type", ""), "퀴즈")
+        st.markdown(
+            f'<div class="study-card"><strong>Q{idx}. [{type_badge}]</strong> · {q["category_label"]}</div>',
+            unsafe_allow_html=True,
+        )
+        st.markdown(q["question"])
+
+        show_hint = st.toggle("💡 힌트 보기", key=f"quiz_hint_{scope_key}_{q_id}")
+        if show_hint and q.get("hint"):
+            st.info(f"힌트: {q['hint']}")
+
+        input_key = f"quiz_input_{scope_key}_{q_id}"
+        user_val = _get_quiz_user_input(q, input_key)
+
+        check_clicked = st.button(
+            "채점하기",
+            key=f"quiz_check_{scope_key}_{q_id}",
+        )
+        prev_res = scope_results.get(q_id)
+        if prev_res is not None and prev_res.get("submitted_answer") != user_val:
+            scope_results.pop(q_id, None)
+
+        if check_clicked or grade_all_clicked:
+            graded = grade_answer(q, user_val)
+            graded["submitted_answer"] = user_val
+            scope_results[q_id] = graded
+
+        res = scope_results.get(q_id)
+        if res is not None:
+            if res["is_empty"]:
+                st.warning("답안을 입력한 뒤 채점해 주세요.")
+            elif res["is_correct"]:
+                st.success(f"정답입니다! 🎉\n\n**해설:** {res['explanation']}")
+            else:
+                sample_ans = res["accepted_answers"][0] if res["accepted_answers"] else ""
+                st.error(f"아쉽습니다. 정답 예시: `{sample_ans}`")
+                st.info(f"**해설:** {res['explanation']}")
+
+        st.markdown("")
+
+    # 채점 결과를 반영한 최신 점수판을 상단 컨테이너에 렌더링
+    summary = calculate_quiz_summary(questions, scope_results)
+    with summary_placeholder:
+        m_col1, m_col2, m_col3 = st.columns(3)
+        with m_col1:
+            st.metric("총 문항", f"{summary['total']}문항")
+        with m_col2:
+            st.metric("현재 점수", f"{summary['correct']} / {summary['total']}")
+        with m_col3:
+            st.metric("정답률", f"{summary['accuracy']:.1f}%")
+        st.progress(summary["correct"] / summary["total"] if summary["total"] > 0 else 0.0)
 
 # ----------------------------------------------------
 # 1. 상단 글로벌 네비게이션 (과목 전환)
 # ----------------------------------------------------
-top_col1, top_col2 = st.columns([3, 1])
+top_col1, top_col2 = st.columns([2.4, 1.6])
 with top_col1:
     st.title("💻 Code Study 실습 플랫폼")
     st.caption("파이썬 데이터 분석, 시각화, 기초통계 및 SQL 쿼리를 웹에서 직접 실습하고 정답을 확인하세요.")
 with top_col2:
     selected_subject = st.segmented_control(
         "과목 선택",
-        options=["🐍 Python 실습실", "🗄️ SQL 실습실"],
+        options=["🐍 Python 실습실", "🗄️ SQL 실습실", "📝 퀴즈 풀기"],
         default="🐍 Python 실습실"
     )
 
@@ -220,10 +342,11 @@ if selected_subject == "🐍 Python 실습실":
     else:
         st.subheader(f"{selected_cat_name} ➔ {unit_info['title']}")
         
-        tab_theory, tab_practice, tab_answer = st.tabs([
+        tab_theory, tab_practice, tab_answer, tab_quiz = st.tabs([
             "📖 1. 핵심 개념 & 이론",
             "✍️ 2. 연습문제 & 코드 실행기",
-            "💡 3. 모범 답안 & 해설"
+            "💡 3. 모범 답안 & 해설",
+            "📝 4. 개념 퀴즈",
         ])
         
         # ----------------------------------------------------
@@ -351,10 +474,27 @@ if selected_subject == "🐍 Python 실습실":
                             diff_html = generate_diff_html(current_user_code, target_q["solution_code"])
                             st.markdown(diff_html, unsafe_allow_html=True)
 
+        # ----------------------------------------------------
+        # 탭 4: 개념 퀴즈
+        # ----------------------------------------------------
+        with tab_quiz:
+            st.markdown(f"### 📝 {unit_info['title']} 개념 확인 퀴즈")
+            st.caption("배운 핵심 개념을 빈칸 넣기, 주관식, O/X 퀴즈로 가볍게 점검해 보세요.")
+            unit_quizzes = get_quizzes(
+                category_id=selected_cat["id"],
+                unit_key=unit_info["key"],
+                version_id=selected_version_id,
+                include_sql=False,
+            )
+            render_quiz_section(
+                unit_quizzes,
+                scope_key=f"unit_{selected_version_id}_{unit_info['key']}",
+            )
+
 # ====================================================
 # [모드 2] 🗄️ SQL 실습실 (추후 확장 및 DuckDB 엔진)
 # ====================================================
-else:
+elif selected_subject == "🗄️ SQL 실습실":
     sql_engine = st.session_state["sql_engine"]
     
     with st.sidebar:
@@ -439,3 +579,60 @@ status (VARCHAR)
     with st.expander("💡 모범 SQL 정답 쿼리 및 해설 확인"):
         st.code(sql_q["solution"], language="sql")
         st.markdown(f"**해설:** {sql_q['explanation']}")
+
+# ====================================================
+# [모드 3] 📝 퀴즈 풀기 (글로벌 퀴즈 모드)
+# ====================================================
+else:
+    with st.sidebar:
+        st.header("📝 퀴즈 필터 설정")
+        release_versions = get_release_versions()
+        default_ver_id = get_default_version_id()
+        version_ids = [v["id"] for v in release_versions]
+        default_ver_idx = version_ids.index(default_ver_id) if default_ver_id in version_ids else len(version_ids) - 1
+        version_labels = {v["id"]: v["label"] for v in release_versions}
+
+        quiz_version_id = st.selectbox(
+            "교육 Step / 버전 선택",
+            options=version_ids,
+            index=default_ver_idx,
+            format_func=lambda vid: version_labels.get(vid, vid),
+            key="quiz_release_version",
+        )
+
+        include_sql_quiz = st.checkbox(
+            "🗄️ SQL 기초 문항 포함",
+            value=True,
+            key="quiz_include_sql",
+        )
+
+        quiz_categories = get_quiz_categories(
+            version_id=quiz_version_id,
+            include_sql=include_sql_quiz,
+        )
+        cat_option_ids = ["all"] + [c["id"] for c in quiz_categories]
+        cat_option_labels = {"all": "📚 전체 대단원"}
+        cat_option_labels.update({c["id"]: c["label"] for c in quiz_categories})
+
+        selected_quiz_cat = st.selectbox(
+            "카테고리 선택",
+            options=cat_option_ids,
+            format_func=lambda cid: cat_option_labels.get(cid, cid),
+            key=f"quiz_cat_select_{quiz_version_id}_{int(include_sql_quiz)}",
+        )
+
+    st.subheader("📝 개념 확인 퀴즈 풀기")
+    st.caption(
+        f"현재 필터: **{version_labels.get(quiz_version_id, quiz_version_id)}** · "
+        f"**{cat_option_labels.get(selected_quiz_cat, selected_quiz_cat)}**"
+    )
+
+    global_quizzes = get_quizzes(
+        category_id=selected_quiz_cat,
+        version_id=quiz_version_id,
+        include_sql=include_sql_quiz,
+    )
+    render_quiz_section(
+        global_quizzes,
+        scope_key=f"global_{quiz_version_id}_{selected_quiz_cat}_{int(include_sql_quiz)}",
+    )

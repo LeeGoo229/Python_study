@@ -9,6 +9,8 @@
 | `modules/python_runner.py` | 파이썬 실습 실행 |
 | `modules/sql_runner.py` | SQL 실습 실행 |
 | `modules/diff_viewer.py` | 풀이·답안 비교 |
+| `modules/quiz_manager.py` | `[0]~[8]` 및 `SQL 기초` 개념 퀴즈 Bank, 버전(`v1.0`~`v1.3`) 필터링 및 유연한 채점 엔진 |
+| `tests/test_quiz_and_app.py` | 퀴즈 채점 단위 테스트 및 Streamlit AppTest UI 통합 테스트 |
 | `README.md` | 앱 구조, Drive 동기화 및 실행 안내 |
 
 ## 데이터 및 교재 배치 안내
