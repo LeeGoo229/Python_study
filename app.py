@@ -26,11 +26,15 @@ from modules.python_runner import run_python_code
 from modules.sql_runner import SQLEngine, SQL_CURRICULUM
 from modules.diff_viewer import generate_diff_html
 from modules.quiz_manager import (
+    DEFAULT_QUIZ_SAMPLE_SIZE,
+    DIFFICULTY_LABELS,
+    DIFFICULTY_OPTIONS,
     QUIZ_TYPE_LABELS,
     calculate_quiz_summary,
     get_quiz_categories,
     get_quizzes,
     grade_answer,
+    sample_quizzes,
 )
 
 # 페이지 기본 설정
@@ -99,6 +103,8 @@ if "sql_engine" not in st.session_state:
     st.session_state["sql_engine"] = SQLEngine()
 if "quiz_results" not in st.session_state:
     st.session_state["quiz_results"] = {}
+if "quiz_drawn" not in st.session_state:
+    st.session_state["quiz_drawn"] = {}
 
 
 def _get_quiz_user_input(q: dict, input_key: str) -> str:
@@ -131,12 +137,52 @@ def _reset_quiz_scope(questions: list, scope_key: str) -> None:
         st.session_state[hint_key] = False
 
 
-def render_quiz_section(questions: list, scope_key: str) -> None:
-    """퀴즈 문항 목록에 대해 점수판, 힌트 토글, 즉시 채점, 다시풀기 UI를 렌더링합니다."""
-    if not questions:
+def render_quiz_section(
+    pool_questions: list,
+    scope_key: str,
+    unit_key: str | None = None,
+) -> None:
+    """퀴즈 풀에서 5문제를 랜덤 출제해 세션에 고정하고 점수판, 힌트 토글, 채점, 재출제 UI를 렌더링합니다."""
+    if not pool_questions:
         st.info("선택한 조건에 해당하는 퀴즈 문항이 없습니다.")
         return
 
+    drawn_map = st.session_state["quiz_drawn"]
+    drawn_questions = drawn_map.get(scope_key)
+
+    draw_col1, draw_col2 = st.columns([2.2, 5.8])
+    with draw_col1:
+        draw_label = (
+            "🎲 다시 출제하기 (새 5문제)"
+            if drawn_questions is not None
+            else "🎯 출제하기 (5문제)"
+        )
+        if st.button(
+            draw_label,
+            type="primary",
+            use_container_width=True,
+            key=f"draw_quiz_{scope_key}",
+        ):
+            prev_ids = [q["id"] for q in drawn_questions] if drawn_questions else None
+            if drawn_questions is not None:
+                _reset_quiz_scope(drawn_questions, scope_key)
+            drawn_map[scope_key] = sample_quizzes(
+                pool_questions,
+                count=DEFAULT_QUIZ_SAMPLE_SIZE,
+                unit_key=unit_key,
+                exclude_ids=prev_ids,
+            )
+            st.rerun()
+    with draw_col2:
+        st.caption(
+            f"선택된 조건의 전체 문항 풀: **{len(pool_questions)}문항** (출제 시 최대 {DEFAULT_QUIZ_SAMPLE_SIZE}문항 랜덤 추출)"
+        )
+
+    if drawn_questions is None:
+        st.info("위의 **[🎯 출제하기 (5문제)]** 버튼을 눌러 랜덤 5문제를 출제해 보세요.")
+        return
+
+    questions = drawn_questions
     scope_results = st.session_state["quiz_results"].setdefault(scope_key, {})
     summary_placeholder = st.container()
 
@@ -162,8 +208,9 @@ def render_quiz_section(questions: list, scope_key: str) -> None:
     for idx, q in enumerate(questions, start=1):
         q_id = q["id"]
         type_badge = QUIZ_TYPE_LABELS.get(q.get("type", ""), "퀴즈")
+        diff_badge = DIFFICULTY_LABELS.get(q.get("difficulty", ""), "기본")
         st.markdown(
-            f'<div class="study-card"><strong>Q{idx}. [{type_badge}]</strong> · {q["category_label"]}</div>',
+            f'<div class="study-card"><strong>Q{idx}. [{type_badge}] [{diff_badge}]</strong> · {q["category_label"]}</div>',
             unsafe_allow_html=True,
         )
         st.markdown(q["question"])
@@ -479,16 +526,24 @@ if selected_subject == "🐍 Python 실습실":
         # ----------------------------------------------------
         with tab_quiz:
             st.markdown(f"### 📝 {unit_info['title']} 개념 확인 퀴즈")
-            st.caption("배운 핵심 개념을 빈칸 넣기, 주관식, O/X 퀴즈로 가볍게 점검해 보세요.")
+            st.caption("난이도를 고른 뒤 [출제하기]를 눌러 5문제를 랜덤으로 풀어보세요.")
+            unit_diff = st.selectbox(
+                "난이도 선택",
+                options=list(DIFFICULTY_OPTIONS.keys()),
+                format_func=lambda d: DIFFICULTY_OPTIONS.get(d, d),
+                key=f"unit_quiz_diff_{selected_version_id}_{unit_info['key']}",
+            )
             unit_quizzes = get_quizzes(
                 category_id=selected_cat["id"],
                 unit_key=unit_info["key"],
                 version_id=selected_version_id,
                 include_sql=False,
+                difficulty=unit_diff,
             )
             render_quiz_section(
                 unit_quizzes,
-                scope_key=f"unit_{selected_version_id}_{unit_info['key']}",
+                scope_key=f"unit_{selected_version_id}_{unit_info['key']}_{unit_diff}",
+                unit_key=unit_info["key"],
             )
 
 # ====================================================
@@ -621,18 +676,27 @@ else:
             key=f"quiz_cat_select_{quiz_version_id}_{int(include_sql_quiz)}",
         )
 
+        selected_quiz_diff = st.selectbox(
+            "난이도 선택",
+            options=list(DIFFICULTY_OPTIONS.keys()),
+            format_func=lambda d: DIFFICULTY_OPTIONS.get(d, d),
+            key="quiz_difficulty_select",
+        )
+
     st.subheader("📝 개념 확인 퀴즈 풀기")
     st.caption(
         f"현재 필터: **{version_labels.get(quiz_version_id, quiz_version_id)}** · "
-        f"**{cat_option_labels.get(selected_quiz_cat, selected_quiz_cat)}**"
+        f"**{cat_option_labels.get(selected_quiz_cat, selected_quiz_cat)}** · "
+        f"난이도 **{DIFFICULTY_OPTIONS.get(selected_quiz_diff, selected_quiz_diff)}**"
     )
 
     global_quizzes = get_quizzes(
         category_id=selected_quiz_cat,
         version_id=quiz_version_id,
         include_sql=include_sql_quiz,
+        difficulty=selected_quiz_diff,
     )
     render_quiz_section(
         global_quizzes,
-        scope_key=f"global_{quiz_version_id}_{selected_quiz_cat}_{int(include_sql_quiz)}",
+        scope_key=f"global_{quiz_version_id}_{selected_quiz_cat}_{int(include_sql_quiz)}_{selected_quiz_diff}",
     )
