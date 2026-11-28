@@ -1,5 +1,5 @@
 {
-  "default_version": "v1.3",
+  "default_version": "v1.4",
   "versions": [
     {
       "id": "v1.0",
@@ -80,7 +80,7 @@
     },
     {
       "id": "v1.3",
-      "label": "v1.3 · SVM·군집화·연관규칙 (2026-11-24, 최신)",
+      "label": "v1.3 · SVM·군집화·연관규칙 (2026-11-24)",
       "date": "2026-11-24",
       "description_file": "운영문서/버전_설명_2026-11-24.md",
       "summary": "[7] Machine_Learning 12~17(SVM, K-Means, Elbow, Silhouette, Apriori) 추가 및 신경망 주석 보강",
@@ -92,6 +92,27 @@
         "ml_15",
         "ml_16",
         "ml_17"
+      ]
+    },
+    {
+      "id": "v1.4",
+      "label": "v1.4 · PCA·앙상블·텍스트 연관규칙 (2026-11-28, 최신)",
+      "date": "2026-11-28",
+      "description_file": "운영문서/버전_설명_2026-11-28.md",
+      "summary": "[7] Machine_Learning 18~28(텍스트 연관규칙, Mall Customers 군집, PCA 이상치/차원축소, AdaBoost, Bagging, Voting, GB, LightGBM, XGBoost, Stacking) 추가 및 군집화 주석 보강",
+      "extends": "v1.3",
+      "added_units": [
+        "ml_18",
+        "ml_19",
+        "ml_20",
+        "ml_21",
+        "ml_22",
+        "ml_23",
+        "ml_24",
+        "ml_25",
+        "ml_26",
+        "ml_27",
+        "ml_28"
       ]
     }
   ]

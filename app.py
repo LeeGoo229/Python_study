@@ -1,7 +1,7 @@
 """
 app.py
 Code Study — 파이썬 및 SQL 인터랙티브 학습 플랫폼 & 대시보드
-Version: 1.3.0 (2026-11-24, Ref: Python Cheat Sheet, [0] Python Basics ~ [8] Model_Evaluation)
+Version: 1.4.0 (2026-11-28, Ref: Python Cheat Sheet, [0] Python Basics ~ [8] Model_Evaluation)
 """
 
 import os

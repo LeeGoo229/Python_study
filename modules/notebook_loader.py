@@ -421,6 +421,86 @@ CURRICULUM = {
                         "theory": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1124_AssociationRule.ipynb",
                         "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1124_AssociationRule_Practice.ipynb",
                         "answer": STUDY_ANS_DIR / "Lv2_Python_1124_AssociationRule_Answer.ipynb"
+                    },
+                    {
+                        "key": "ml_18",
+                        "title": "18. 텍스트 단어 연관 규칙 분석 (Association Rule Text)",
+                        "theory": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1125_AssociationRule_Text.ipynb",
+                        "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1125_AssociationRule_Text_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1125_AssociationRule_Text_Answer.ipynb",
+                        "data_dir": STUDY_PY_DIR / "[7] Machine_Learning" / "data"
+                    },
+                    {
+                        "key": "ml_19",
+                        "title": "19. 고객 세분화 군집 분석 (Mall Customers Clustering)",
+                        "theory": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1125_Clustering_Mall_Customers.ipynb",
+                        "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1125_Clustering_Mall_Customers_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1125_Clustering_Mall_Customers_Answer.ipynb",
+                        "data_dir": STUDY_PY_DIR / "[7] Machine_Learning" / "data"
+                    },
+                    {
+                        "key": "ml_20",
+                        "title": "20. PCA 기반 이상치 탐지 (PCA Anomaly Detection)",
+                        "theory": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1126_PCA_AnomalyDetection.ipynb",
+                        "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1126_PCA_AnomalyDetection_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1126_PCA_AnomalyDetection_Answer.ipynb"
+                    },
+                    {
+                        "key": "ml_21",
+                        "title": "21. PCA 차원 축소와 군집·분류 비교 (PCA Dimensionality Reduction)",
+                        "theory": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1126_PCA_DR_Clustering.ipynb",
+                        "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1126_PCA_DR_Clustering_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1126_PCA_DR_Clustering_Answer.ipynb"
+                    },
+                    {
+                        "key": "ml_22",
+                        "title": "22. 에이다부스트 앙상블 분류 (AdaBoost)",
+                        "theory": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1127_AdaBoost.ipynb",
+                        "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1127_AdaBoost_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1127_AdaBoost_Answer.ipynb"
+                    },
+                    {
+                        "key": "ml_23",
+                        "title": "23. HR 퇴사 예측 배깅 앙상블 (Bagging HR)",
+                        "theory": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1127_bagging_hr.ipynb",
+                        "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1127_bagging_hr_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1127_bagging_hr_Answer.ipynb",
+                        "data_dir": STUDY_PY_DIR / "[7] Machine_Learning" / "data"
+                    },
+                    {
+                        "key": "ml_24",
+                        "title": "24. 다양한 기반 모델 배깅과 보팅 비교 (Bagging & Voting)",
+                        "theory": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1127_bagging_knn_LR_DT.ipynb",
+                        "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1127_bagging_knn_LR_DT_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1127_bagging_knn_LR_DT_Answer.ipynb"
+                    },
+                    {
+                        "key": "ml_25",
+                        "title": "25. 그래디언트 부스팅 분류 (Gradient Boosting)",
+                        "theory": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1127_ensemble_boosting_GB.ipynb",
+                        "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1127_ensemble_boosting_GB_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1127_ensemble_boosting_GB_Answer.ipynb"
+                    },
+                    {
+                        "key": "ml_26",
+                        "title": "26. LightGBM 부스팅 분류 (LightGBM)",
+                        "theory": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1127_ensemble_boosting_LightGBM.ipynb",
+                        "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1127_ensemble_boosting_LightGBM_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1127_ensemble_boosting_LightGBM_Answer.ipynb"
+                    },
+                    {
+                        "key": "ml_27",
+                        "title": "27. XGBoost 부스팅 분류 (XGBoost)",
+                        "theory": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1127_ensemble_boosting_XGB.ipynb",
+                        "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1127_ensemble_boosting_XGB_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1127_ensemble_boosting_XGB_Answer.ipynb"
+                    },
+                    {
+                        "key": "ml_28",
+                        "title": "28. 스태킹 앙상블과 OOF 메타 학습 (Stacking)",
+                        "theory": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1127_ensemble_stacking.ipynb",
+                        "practice": STUDY_PY_DIR / "[7] Machine_Learning" / "Lv2_Python_1127_ensemble_stacking_Practice.ipynb",
+                        "answer": STUDY_ANS_DIR / "Lv2_Python_1127_ensemble_stacking_Answer.ipynb"
                     }
                 ]
             },
